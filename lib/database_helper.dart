@@ -86,13 +86,13 @@ class DatabaseHelper {
 
   Future<int> insertUser(User user) async {
     final db = await userDatabase;
-    return await db!.insert(userTableName, user.toMap(),
+    return await db.insert(userTableName, user.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<User?> getUserByEmail(String email) async {
     final db = await userDatabase;
-    final List<Map<String, dynamic>> maps = await db!.query(
+    final List<Map<String, dynamic>> maps = await db.query(
       userTableName,
       where: 'email = ?',
       whereArgs: [email],
