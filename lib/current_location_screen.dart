@@ -163,7 +163,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
               child: Text("Display History"),
             ),
           ],
-        ),
+        ),  
       ),
     );
   }

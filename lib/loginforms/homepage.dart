@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/loginforms/database_helper.dart';
+
 import 'package:my_app/loginforms/loginpage.dart';
+import 'package:my_app/user.dart';
 
 class HomePage extends StatelessWidget {
   final User user;

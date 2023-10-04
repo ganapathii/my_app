@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/loginforms/database_helper.dart';
+import 'package:my_app/database_helper.dart';
+import 'package:my_app/user.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -32,8 +33,9 @@ class _SignupPageState extends State<SignupPage> {
         });
       } else {
         await _db.insertUser(user);
-      
-        Navigator.pop(context as BuildContext);
+
+        // Navigate back to the login page after successful signup
+        Navigator.pop(context);
       }
     }
   }
@@ -52,19 +54,20 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-                 padding: const EdgeInsets.all(28.0),
-                 child: Image.asset('assets/locations.png',
-                 scale: 2.7,
-                 ),
-               ),
+              padding: const EdgeInsets.all(28.0),
+              child: Image.asset(
+                'assets/locations.png',
+                scale: 2.7,
+              ),
+            ),
             Form(
               key: _formKey,
               child: Container(
-               
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
-                      color: const Color.fromARGB(255, 235, 235, 235)),
+                    color: const Color.fromARGB(255, 235, 235, 235),
+                  ),
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(30),
                   ),
@@ -76,18 +79,13 @@ class _SignupPageState extends State<SignupPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Create Account",
-                                style: TextStyle(
-                                  color: Color.fromARGB(200, 15, 15, 15),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 26,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            "Create Account",
+                            style: TextStyle(
+                              color: Color.fromARGB(200, 15, 15, 15),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 26,
+                            ),
                           ),
                         ],
                       ),
@@ -100,9 +98,10 @@ class _SignupPageState extends State<SignupPage> {
                             Text(
                               "Name",
                               style: TextStyle(
-                                  color: Color.fromARGB(218, 0, 0, 0),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500),
+                                color: Color.fromARGB(218, 0, 0, 0),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
@@ -133,9 +132,10 @@ class _SignupPageState extends State<SignupPage> {
                             Text(
                               "Email",
                               style: TextStyle(
-                                  color: Color.fromARGB(218, 0, 0, 0),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500),
+                                color: Color.fromARGB(218, 0, 0, 0),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
@@ -174,9 +174,10 @@ class _SignupPageState extends State<SignupPage> {
                             Text(
                               "Password",
                               style: TextStyle(
-                                  color: Color.fromARGB(218, 0, 0, 0),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500),
+                                color: Color.fromARGB(218, 0, 0, 0),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
@@ -208,7 +209,8 @@ class _SignupPageState extends State<SignupPage> {
                             child: Text(
                               'Sign Up',
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

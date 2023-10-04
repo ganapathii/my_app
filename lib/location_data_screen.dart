@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_app/database_helper.dart';
+import 'package:my_app/loginforms/loginpage.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -43,6 +44,16 @@ class _LocationDataScreenState extends State<LocationDataScreen> {
     );
   }
 
+void _logout() {
+ 
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(
+      builder: (context) => LoginPage(), 
+    ),
+  );
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +67,12 @@ class _LocationDataScreenState extends State<LocationDataScreen> {
             Text("Location History"),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app), // Use any icon you prefer
+            onPressed: _logout,
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: locationDataList.length,
@@ -68,7 +85,6 @@ class _LocationDataScreenState extends State<LocationDataScreen> {
           return Dismissible(
             key: Key(timestamp), 
             onDismissed: (direction) {
-            
               setState(() {
                 locationDataList.removeAt(index);
               });
@@ -247,7 +263,6 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
                       size: 30,
                     ),
                     onPressed: () {
-                    
                       _togglePolylines();
                     },
                   ),
